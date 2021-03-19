@@ -89,6 +89,7 @@ namespace Maui.Controls.Sample.Pages
       
 			verticalStack.Add(new Editor());
 			verticalStack.Add(new Editor { Text = "Editor" });
+			verticalStack.Add(new Editor { Text = "ReadOnly Editor", IsReadOnly = true });
 			verticalStack.Add(new Editor { Text = "Predictive Text Off", IsTextPredictionEnabled = false });
 
 			var entry = new Entry();

@@ -6,6 +6,11 @@
 	public interface IEditor : IView, IText
 	{
 		/// <summary>
+		/// Gets a value that indicate if can modify the text.
+		/// </summary>
+		bool IsReadOnly { get; set; }
+
+		/// <summary>
 		/// Gets a value that controls whether text prediction and automatic text correction is on or off.
 		/// </summary>
 		bool IsTextPredictionEnabled { get; }

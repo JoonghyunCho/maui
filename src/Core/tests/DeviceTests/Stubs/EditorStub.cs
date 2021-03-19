@@ -10,6 +10,8 @@
 
 		public double CharacterSpacing { get; set; }
 
+		public bool IsReadOnly { get; set; }
+
 		public bool IsTextPredictionEnabled { get; set; }
 	}
 }

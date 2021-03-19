@@ -6,6 +6,7 @@
 		{
 			[nameof(IEditor.Text)] = MapText,
 			[nameof(IEditor.CharacterSpacing)] = MapCharacterSpacing,
+			[nameof(IEditor.IsReadOnly)] = MapIsReadOnly,
 			[nameof(IEditor.IsTextPredictionEnabled)] = MapIsTextPredictionEnabled
 		};
 

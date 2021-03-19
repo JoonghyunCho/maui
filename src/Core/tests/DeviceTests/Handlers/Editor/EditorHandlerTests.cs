@@ -46,7 +46,21 @@ namespace Microsoft.Maui.DeviceTests
 				setValue,
 				unsetValue);
 		}
-		
+
+		[Theory(DisplayName = "Is Read Only Initializes Correctly")]
+		[InlineData(true)]
+		[InlineData(false)]
+		public async Task IsReadOnlyInitializesCorrectly(bool isReadOnly)
+		{
+			var editor = new EditorStub()
+			{
+				IsReadOnly = isReadOnly,
+				Text = "Test"
+			};
+
+			await ValidatePropertyInitValue(editor, () => editor.IsReadOnly, GetNativeIsReadOnly, editor.IsReadOnly);
+		}
+
 		[Theory(DisplayName = "Is Text Prediction Enabled")]
 		[InlineData(true)]
 		[InlineData(false)]

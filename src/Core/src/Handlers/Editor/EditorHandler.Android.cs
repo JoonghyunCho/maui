@@ -30,7 +30,12 @@ namespace Microsoft.Maui.Handlers
 		{
 			handler.TypedNativeView?.UpdateCharacterSpacing(editor);
 		}
-			
+
+		public static void MapIsReadOnly(EditorHandler handler, IEditor editor)
+		{
+			handler.TypedNativeView?.UpdateIsReadOnly(editor);
+		}
+
 		public static void MapIsTextPredictionEnabled(EditorHandler handler, IEditor editor)
 		{
 			handler.TypedNativeView?.UpdateIsTextPredictionEnabled(editor);

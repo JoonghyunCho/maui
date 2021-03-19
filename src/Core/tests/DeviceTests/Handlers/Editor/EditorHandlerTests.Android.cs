@@ -40,8 +40,11 @@ namespace Microsoft.Maui.DeviceTests
 
 		string GetNativeText(EditorHandler editorHandler) =>
 			GetNativeEditor(editorHandler).Text;
-		
-		bool GetNativeIsTextPredictionEnabled(EditorHandler editorHandler) =>
+
+        bool GetNativeIsReadOnly(EditorHandler editorHandler) =>
+            !GetNativeEditor(editorHandler).Focusable;
+
+        bool GetNativeIsTextPredictionEnabled(EditorHandler editorHandler) =>
 			!GetNativeEditor(editorHandler).InputType.HasFlag(InputTypes.TextFlagNoSuggestions);
 
         double GetNativeCharacterSpacing(EditorHandler editorHandler)

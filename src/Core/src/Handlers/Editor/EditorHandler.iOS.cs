@@ -1,5 +1,4 @@
-﻿using System;
-using CoreGraphics;
+﻿using CoreGraphics;
 using UIKit;
 
 namespace Microsoft.Maui.Handlers
@@ -25,7 +24,12 @@ namespace Microsoft.Maui.Handlers
 		{
 			handler.TypedNativeView?.UpdateCharacterSpacing(editor);
 		}
-			
+
+		public static void MapIsReadOnly(EditorHandler handler, IEditor editor)
+		{
+			handler.TypedNativeView?.UpdateIsReadOnly(editor);
+		}
+
 		public static void MapIsTextPredictionEnabled(EditorHandler handler, IEditor editor)
 		{
 			handler.TypedNativeView?.UpdatePredictiveText(editor);
