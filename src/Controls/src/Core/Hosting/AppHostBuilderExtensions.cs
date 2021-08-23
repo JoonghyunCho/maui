@@ -59,7 +59,8 @@ namespace Microsoft.Maui.Controls.Hosting
 			handlersCollection.AddHandler<MenuFlyoutItem, MenuFlyoutItemHandler>();
 			handlersCollection.AddHandler<MenuBarItem, MenuBarItemHandler>();
 
-#if ANDROID || IOS
+#if ANDROID || IOS || TIZEN
+			handlersCollection.AddHandler<RefreshView, RefreshViewHandler>();
 			handlersCollection.AddHandler<SwipeItemView, SwipeItemViewHandler>();
 #endif
 #if WINDOWS || ANDROID
