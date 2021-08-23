@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Hosting;
@@ -23,6 +25,21 @@ namespace Samples
 					essentials.AddAppAction("app_info", "App Info", icon: "app_info_action_icon");
 					essentials.AddAppAction("battery_info", "Battery Info");
 					essentials.OnAppAction(App.HandleAppActions);
+				});
+
+#if TIZEN
+			builder
+				.ConfigureServices(services =>
+				{
+					services.AddTransient((_) =>
+					{
+						var option = new InitializationOptions
+						{
+							DisplayResolutionUnit = DisplayResolutionUnit.DP(true),
+						};
+						return option;
+					});
+#endif
 				});
 
 			return builder.Build();
