@@ -71,7 +71,7 @@ namespace Microsoft.Maui.Controls.Hosting
 
 		static MauiAppBuilder SetupDefaults(this MauiAppBuilder builder)
 		{
-#if ANDROID || IOS || WINDOWS
+#if ANDROID || IOS || WINDOWS || TIZEN
 			// initialize compatibility DependencyService
 			DependencyService.SetToInitialized();
 			DependencyService.Register<Xaml.ResourcesLoader>();
@@ -91,7 +91,7 @@ namespace Microsoft.Maui.Controls.Hosting
 				{
 					handlers.AddMauiControlsHandlers();
 
-#if ANDROID || IOS || WINDOWS
+#if ANDROID || IOS || WINDOWS || TIZEN
 					handlers.AddHandler(typeof(ListView), typeof(Handlers.Compatibility.ListViewRenderer));
 					handlers.AddHandler(typeof(Cell), typeof(Handlers.Compatibility.CellRenderer));
 					handlers.AddHandler(typeof(ImageCell), typeof(Handlers.Compatibility.ImageCellRenderer));
@@ -147,6 +147,9 @@ namespace Microsoft.Maui.Controls.Hosting
 					handlers.TryAddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Compatibility.RelativeLayout), typeof(DefaultRenderer));
 					handlers.TryAddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Compatibility.AbsoluteLayout), typeof(DefaultRenderer));
 
+#if TIZEN
+					handlers.TryAddCompatibilityRenderer(typeof(ContentView), typeof(LayoutRenderer));
+#endif
 					// Shimmed renderers go directly to the registrar to load Image Handlers
 					Internals.Registrar.Registered.Register(typeof(FileImageSource), typeof(FileImageSourceHandler));
 					Internals.Registrar.Registered.Register(typeof(StreamImageSource), typeof(StreamImagesourceHandler));
