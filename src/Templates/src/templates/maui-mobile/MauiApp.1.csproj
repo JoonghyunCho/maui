@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>DOTNET_TFM-android;DOTNET_TFM-ios;DOTNET_TFM-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>DOTNET_TFM-android;DOTNET_TFM-ios;DOTNET_TFM-maccatalyst;DOTNET_TFM-tizen</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);DOTNET_TFM-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiApp._1</RootNamespace>
@@ -29,6 +29,7 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'DOTNET_TFM-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'DOTNET_TFM-tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
