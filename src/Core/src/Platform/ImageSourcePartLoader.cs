@@ -11,9 +11,12 @@ using PlatformView = Android.Views.View;
 #elif WINDOWS
 using PlatformImage = Microsoft.UI.Xaml.Media.ImageSource;
 using PlatformView = Microsoft.UI.Xaml.FrameworkElement;
-#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
-using PlatformView = System.Object;
+#elif TIZEN
+using PlatformImage = Tizen.UIExtensions.ElmSharp.Image;
+using PlatformView = Tizen.UIExtensions.ElmSharp.Image;
+#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID && !TIZEN)
 using PlatformImage = System.Object;
+using PlatformView = System.Object;
 #endif
 
 namespace Microsoft.Maui.Platform
@@ -56,8 +59,13 @@ namespace Microsoft.Maui.Platform
 
 				if (imageSource != null)
 				{
+<<<<<<< HEAD
 #if __IOS__ || __ANDROID__ || WINDOWS
 					var result = await imageSource.UpdateSourceAsync(PlatformView, ImageSourceServiceProvider, SetImage!, token)
+=======
+#if __IOS__ || __ANDROID__ || WINDOWS || TIZEN
+					var result = await imageSource.UpdateSourceAsync(PlatformView, ImageSourceServiceProvider, SetImage!, token)
+>>>>>>> fea972f23 (Bump to latest (rc1))
 						.ConfigureAwait(false);
 
 					SourceManager.CompleteLoad(result);
