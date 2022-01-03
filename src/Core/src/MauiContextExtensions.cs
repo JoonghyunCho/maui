@@ -15,7 +15,7 @@ using NativeApplication = Android.App.Application;
 using NativeWindow = Android.App.Activity;
 #elif TIZEN
 using NativeApplication = Tizen.Applications.CoreApplication;
-using NativeWindow =  Microsoft.Maui.Platform.CoreUIAppContext;
+using NativeWindow =  ElmSharp.Window;
 #else
 using NativeApplication = System.Object;
 using NativeWindow = System.Object;
@@ -51,9 +51,6 @@ namespace Microsoft.Maui
 
 #if __ANDROID__
 			var scopedContext = new MauiContext(scope.ServiceProvider, platformWindow);
-#elif TIZEN
-			var scopedContext = new MauiContext(scope.ServiceProvider, platformWindow);
-			scopedContext.AddWeakSpecific(platformWindow.MainWindow);
 #else
 			var scopedContext = new MauiContext(scope.ServiceProvider);
 #endif
