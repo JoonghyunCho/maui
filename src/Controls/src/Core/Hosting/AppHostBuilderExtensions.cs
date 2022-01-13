@@ -75,6 +75,9 @@ namespace Microsoft.Maui.Controls.Hosting
 			handlersCollection.AddHandler<Shell, ShellHandler>();
 #endif
 #endif
+#if TIZEN
+			handlersCollection.AddHandler<Shell, ShellHandler>();
+#endif
 			return handlersCollection;
 		}
 
