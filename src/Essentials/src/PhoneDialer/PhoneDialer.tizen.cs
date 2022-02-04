@@ -7,7 +7,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 		public bool IsSupported
 			=> Platform.GetFeatureInfo<bool>("contact");
 
-		public void PlatformOpen(string number)
+		public void Open(string number)
 		{
 			ValidateOpen(number);
 
