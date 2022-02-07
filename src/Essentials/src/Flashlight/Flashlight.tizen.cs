@@ -1,14 +1,24 @@
 using System.Threading.Tasks;
 using Tizen.System;
 
-namespace Microsoft.Maui.Essentials
+namespace Microsoft.Maui.Essentials.Implementations
 {
-	public static partial class Flashlight
+	public class FlashlightImplementation:IFlashlight
 	{
 		internal static bool IsSupported
 			=> Platform.GetFeatureInfo<bool>("camera.back.flash");
 
-		internal static Task SwitchFlashlight(bool switchOn)
+		public Task TurnOnAsync()
+		{
+			return SwitchFlashlight(true);
+		}
+
+		public Task TurnOffAsync()
+		{
+			return SwitchFlashlight(false);
+		}
+
+		Task SwitchFlashlight(bool switchOn)
 		{
 			Permissions.EnsureDeclared<Permissions.Flashlight>();
 			return Task.Run(() =>
@@ -21,16 +31,6 @@ namespace Microsoft.Maui.Essentials
 				else
 					Led.Brightness = 0;
 			});
-		}
-
-		static Task PlatformTurnOnAsync()
-		{
-			return SwitchFlashlight(true);
-		}
-
-		static Task PlatformTurnOffAsync()
-		{
-			return SwitchFlashlight(false);
 		}
 	}
 }
