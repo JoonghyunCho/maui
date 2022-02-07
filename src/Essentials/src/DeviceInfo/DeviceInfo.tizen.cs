@@ -1,3 +1,4 @@
+using System;
 using Plat = Microsoft.Maui.Essentials.Platform;
 
 namespace Microsoft.Maui.Essentials.Implementations
