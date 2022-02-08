@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microsoft.Maui.Essentials
+namespace Microsoft.Maui.Essentials.Implementations
 {
-	public static partial class Geocoding
+	public class GeocodingImplementation: IGeocoding
 	{
-		static async Task<IEnumerable<Placemark>> PlatformGetPlacemarksAsync(double latitude, double longitude)
+		public async Task<IEnumerable<Placemark>> GetPlacemarksAsync(double latitude, double longitude)
 		{
 			Permissions.EnsureDeclared<Permissions.Maps>();
 			if (string.IsNullOrWhiteSpace(Platform.MapServiceToken))
@@ -35,7 +35,7 @@ namespace Microsoft.Maui.Essentials
 			return list;
 		}
 
-		static async Task<IEnumerable<Location>> PlatformGetLocationsAsync(string address)
+		public async Task<IEnumerable<Location>> GetLocationsAsync(string address)
 		{
 			Permissions.EnsureDeclared<Permissions.Maps>();
 			if (string.IsNullOrWhiteSpace(Platform.MapServiceToken))
