@@ -2,11 +2,11 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Tizen.Applications;
 
-namespace Microsoft.Maui.Essentials
+namespace Microsoft.Maui.Essentials.Implementations
 {
-	public static partial class Map
+	public class MapImplementation:IMap
 	{
-		internal static Task PlatformOpenMapsAsync(double latitude, double longitude, MapLaunchOptions options)
+		public Task OpenMapsAsync(double latitude, double longitude, MapLaunchOptions options)
 		{
 			Permissions.EnsureDeclared<Permissions.LaunchApp>();
 
@@ -23,7 +23,7 @@ namespace Microsoft.Maui.Essentials
 			return Task.CompletedTask;
 		}
 
-		internal static Task PlatformOpenMapsAsync(Placemark placemark, MapLaunchOptions options)
+		public Task OpenMapsAsync(Placemark placemark, MapLaunchOptions options)
 		{
 			Permissions.EnsureDeclared<Permissions.LaunchApp>();
 
