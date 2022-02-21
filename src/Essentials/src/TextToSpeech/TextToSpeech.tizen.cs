@@ -46,7 +46,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 
 			var pitch = 0;
 			if (options?.Pitch.HasValue ?? false)
-				pitch = (int)Math.Round(options.Pitch.Value / PitchMax * tts.GetSpeedRange().Max, MidpointRounding.AwayFromZero);
+				pitch = (int)Math.Round(options.Pitch.Value / TextToSpeech.PitchMax * tts.GetSpeedRange().Max, MidpointRounding.AwayFromZero);
 
 			tts.AddText(text, language, (int)voiceType, pitch);
 			tts.Play();

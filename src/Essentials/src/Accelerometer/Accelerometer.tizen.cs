@@ -8,7 +8,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 		internal static TizenAccelerometer DefaultSensor =>
 			(TizenAccelerometer)Platform.GetDefaultSensor(SensorType.Accelerometer);
 
-		internal static bool IsSupported =>
+		public bool IsSupported =>
 			TizenAccelerometer.IsSupported;
 
 		void PlatformStart(SensorSpeed sensorSpeed)
