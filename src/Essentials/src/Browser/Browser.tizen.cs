@@ -7,7 +7,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 {
 	public partial class BrowserImplementation : IBrowser
 	{
-		public Task<bool> PlatformOpenAsync(Uri uri, BrowserLaunchOptions launchMode)
+		public Task<bool> OpenAsync(Uri uri, BrowserLaunchOptions launchMode)
 		{
 			if (uri == null)
 				throw new ArgumentNullException(nameof(uri));

@@ -6,7 +6,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 	public partial class BatteryImplementation : IBattery
 	{
 		void OnChanged(object sender, object e)
-			=> MainThread.BeginInvokeOnMainThread(OnBatteryInfoChanged);
+			=> MainThread.BeginInvokeOnMainThread(Battery.OnBatteryInfoChanged);
 
 		public void StartBatteryListeners()
 		{
@@ -22,7 +22,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 			TizenBattery.LevelChanged -= OnChanged;
 		}
 
-		public double PlatformChargeLevel
+		public double ChargeLevel
 		{
 			get
 			{

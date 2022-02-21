@@ -41,7 +41,7 @@ namespace Microsoft.Maui.Essentials.Implementations
 				{
 					Subject = subject,
 					Body = body,
-					To = to.List<string>()
+					To = to.ToList()
 				});
 
 		public Task ComposeAsync()
