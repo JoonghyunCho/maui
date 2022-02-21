@@ -4,7 +4,9 @@ using PlatformView = Microsoft.Maui.Platform.MauiDatePicker;
 using PlatformView = Microsoft.Maui.Platform.MauiDatePicker;
 #elif WINDOWS
 using PlatformView = Microsoft.UI.Xaml.Controls.CalendarDatePicker;
-#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
+#elif TIZEN
+using PlatformView = Tizen.UIExtensions.ElmSharp.Entry;
+#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID && !TIZEN)
 using PlatformView = System.Object;
 #endif
 

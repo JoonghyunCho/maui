@@ -4,7 +4,9 @@ using PlatformView = Microsoft.Maui.Graphics.Platform.PlatformGraphicsView;
 using PlatformView = Microsoft.Maui.Graphics.Platform.PlatformGraphicsView;
 #elif WINDOWS
 using PlatformView = Microsoft.Maui.Graphics.Win2D.W2DGraphicsView;
-#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
+#elif TIZEN
+using PlatformView = Microsoft.Maui.Graphics.Skia.Views.SkiaGraphicsView;
+#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID && !TIZEN)
 using PlatformView = System.Object;
 #endif
 
