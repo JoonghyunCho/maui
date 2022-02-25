@@ -4,7 +4,9 @@ using PlatformView = Microsoft.Maui.Platform.MauiTimePicker;
 using PlatformView = Microsoft.Maui.Platform.MauiTimePicker;
 #elif WINDOWS
 using PlatformView = Microsoft.UI.Xaml.Controls.TimePicker;
-#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID)
+#elif TIZEN
+using PlatformView = Tizen.UIExtensions.ElmSharp.Entry;
+#elif NETSTANDARD || (NET6_0 && !IOS && !ANDROID && !TIZEN)
 using PlatformView = System.Object;
 #endif
 
