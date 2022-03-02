@@ -29,5 +29,8 @@ namespace Microsoft.Maui.Essentials.Implementations
 			=> AppTheme.Unspecified;
 
 		public AppPackagingModel PackagingModel => AppPackagingModel.Packaged;
+
+		public LayoutDirection RequestedLayoutDirection
+			=> LayoutDirection.LeftToRight;
 	}
 }
