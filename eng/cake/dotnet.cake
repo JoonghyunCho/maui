@@ -468,7 +468,7 @@ void RunMSBuildWithDotNet(
         SetDotNetEnvironmentVariables();
 
     // If we're not on Windows, use ./bin/dotnet/dotnet
-    if (!IsRunningOnWindows() || target == "Run")
+    if (IsRunningOnWindows() || target == "Run")
     {
         var msbuildSettings = new DotNetCoreMSBuildSettings()
             .SetConfiguration(configuration)

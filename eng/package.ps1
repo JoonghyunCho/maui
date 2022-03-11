@@ -23,7 +23,7 @@ if (Test-Path -Path $dotnet) {
 
 $dotnet = (Get-Item $dotnet).FullName
 
-if ($IsWindows)
+if (!$IsWindows)
 {
     if (-not $msbuild)
     {

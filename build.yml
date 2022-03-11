@@ -1,0 +1,53 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- ci-test
+
+pool:
+  vmImage: windows-2022
+
+stages:
+- stage: build_net6
+  displayName: Build .NET 6
+  dependsOn: []
+  jobs:
+    - job: build_net6
+      steps:
+        - task: UseDotNet@2                 # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/tool/dotnet-core-tool-installer?view=azure-devops
+          displayName: 'Use .NET SDK 6'
+          inputs:
+            packageType: sdk
+            version: 6.0.200
+            #useGlobalJson: false
+            installationPath: D:/a/1/_tool/dotnet/
+
+        - pwsh: |
+            dotnet --version
+            dotnet --list-sdks
+          displayName: 'Show .NET SDK info'
+    
+        - pwsh: ./build.ps1 --target provision
+          displayName: 'Cake Provision'
+
+        - pwsh: |
+            Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1'
+            .\workload-install.ps1 -v 7.0.100-preview.6.19 -t 6.0.200
+          displayName: 'Install Tizen'
+
+        - pwsh: dotnet nuget locals all --clear
+          displayName: 'Clear all NuGet caches'
+
+        - pwsh: ./build.ps1 --target=dotnet --configuration="Debug" --verbosity=diagnostic
+          displayName: 'Install .NET'
+
+        - pwsh: ./build.ps1 --target=dotnet-pack --configuration="Debug" --verbosity=diagnostic
+          displayName: 'Pack .NET Maui'
+
+        - pwsh: ./build.ps1 --target=dotnet-local-workloads --configuration="Debug" --verbosity=diagnostic
+          displayName: 'Install .NET (Local Workload)'
+
+        #- pwsh: ./build.ps1 --target=dotnet-build --configuration="Debug" --verbosity=diagnostic
+        #  displayName: 'Build .NET Maui'
