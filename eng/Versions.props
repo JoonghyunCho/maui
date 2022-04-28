@@ -50,7 +50,7 @@
     <MicrosoftDotNetXHarnessTestRunnersCommonVersion>1.0.0-prerelease.22219.1</MicrosoftDotNetXHarnessTestRunnersCommonVersion>
     <MicrosoftDotNetXHarnessTestRunnersXunitVersion>1.0.0-prerelease.22219.1</MicrosoftDotNetXHarnessTestRunnersXunitVersion>
     <MicrosoftDotNetXHarnessCLIVersion>1.0.0-prerelease.22219.1</MicrosoftDotNetXHarnessCLIVersion>
-    <TizenUIExtensionsVersion>0.6.0-pre1</TizenUIExtensionsVersion>
+    <TizenUIExtensionsVersion>0.8.0-pre1</TizenUIExtensionsVersion>
     <SvgSkiaVersion>0.4.1</SvgSkiaVersion>
   </PropertyGroup>
   <PropertyGroup>
